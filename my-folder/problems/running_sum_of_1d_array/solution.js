@@ -3,13 +3,11 @@
  * @return {number[]}
  */
 var runningSum = function(nums) {
-    temp_var = 0
-    result_arr = []
-    
-    for(var i =0;i<nums.length;i++){
-        temp_var += nums[i]
-        result_arr.push(temp_var)
+    let sum = 0;
+    let resultarr= []
+    for(let i =0;i<nums.length;i++){
+        sum+= nums[i]
+        resultarr.push(sum)
     }
-    return result_arr
-    
+    return resultarr
 };
