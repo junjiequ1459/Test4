@@ -2,12 +2,10 @@
 # @return {Integer[]}
 def running_sum(nums)
     result = []
-    nums.each do |e|
-        if result.empty?
-        result << e
-        else
-        result << e + result[-1] 
-        end
+    temp = 0
+    nums.each do |num|
+        temp += num
+        result << temp
     end
     result
 end
