@@ -1,11 +1,13 @@
 # @param {Integer[]} nums
 # @return {Integer[]}
 def running_sum(nums)
-    result = []
-    temp = 0
-    nums.each do |num|
-        temp += num
-        result << temp
+    tempNum = 0
+    resultArr = []
+
+    nums.each do |ele|
+        tempNum += ele
+        resultArr << tempNum
     end
-    result
+    
+    resultArr
 end
