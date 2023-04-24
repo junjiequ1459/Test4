@@ -3,16 +3,17 @@
  * @return {number}
  */
 function pivotIndex(nums) {
-  let leftSum = 0;
-  let rightSum = nums.reduce((a, b) => a + b, 0);
+    let left = 0
+    let right = nums.reduce((a,b)=> a+b,0)
 
-  for (let i = 0; i < nums.length; i++) {
-    rightSum -= nums[i];
-    if (leftSum === rightSum) {
-      return i;
+    for(let i in nums){
+        left += nums[i]
+        if(left !== right){
+            right -= nums[i]
+        }else{
+            return i
+        }
     }
-    leftSum += nums[i];
-  }
+    return -1
 
-  return -1;
 }
