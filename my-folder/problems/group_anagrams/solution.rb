@@ -2,17 +2,20 @@
 # @return {String[][]}
 def group_anagrams(strs)
 
-    hash = {}
+hash = {}
 
-    strs.each do |word|
-    sortStr = word.chars.sort.join
-    if hash[sortStr]
-        hash[sortStr] += [word]
-    else
-        hash[sortStr] = [word]
-    end
+strs.each do |ele|
+sortedWord = ele.chars.sort
 
-    end
-    return hash.values
+if hash[sortedWord]
+    hash[sortedWord] << ele
+else
+    hash[sortedWord] = [ele]
+end
+
+end
+
+hash.values
     
 end
+
