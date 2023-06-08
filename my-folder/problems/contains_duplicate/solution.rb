@@ -1,15 +1,12 @@
 # @param {Integer[]} nums
 # @return {Boolean}
 def contains_duplicate(nums)
-    obj = {}
+sorted_nums = nums.sort
 
-    nums.each do |ele|
-    if obj[ele]
+(0...sorted_nums.length-1).each do |i|
+    if sorted_nums[i] == sorted_nums[i+1]
         return true
-    else
-        obj[ele] = 1
     end
-    end
-
-    false
+end
+false
 end
