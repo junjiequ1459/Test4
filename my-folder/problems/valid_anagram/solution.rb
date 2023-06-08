@@ -2,33 +2,17 @@
 # @param {String} t
 # @return {Boolean}
 def is_anagram(s, t)
+    return false if s.length != t.length
 
-    obj = Hash.new(0)
+    hash = Array.new(26,0)
 
-    s.each_char do |ele|
-    if obj[ele]
-        obj[ele] +=1
-    else
-        obj[ele] = 1
-    end
+    s.chars.each do |e|
+        hash[e.ord - 'a'.ord] += 1
     end
 
-
-    t.each_char do |ele|
-    if obj[ele]
-        obj[ele] -=1
-    else
-        obj[ele] = -1
-    end
+        t.chars.each do |e|
+        hash[e.ord - 'a'.ord] -= 1
     end
 
-obj.each do |key, value|
-  if value != 0
-  return false
-  end
-end
-
-true
-
-    
+    hash.all? {|e| e == 0}
 end
