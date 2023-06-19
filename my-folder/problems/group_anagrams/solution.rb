@@ -2,23 +2,15 @@
 # @return {String[][]}
 def group_anagrams(strs)
 
-obj = {}
+result = {}
 
-strs.each do |words|
-key = Array.new(26, 0)
-
-words.each_char do |char|
-    key[char.ord - 'a'.ord] += 1
+strs.each do |word|
+key = Array.new(26,0)
+word.each_char {|char| key[char.ord - 'a'.ord] += 1}
+result[key] ||= []
+result[key] << word
 end
 
-if obj[key]
-    obj[key] += [words]
-else
-    obj[key] = [words]
-end
+result.values
 
-end
-
-obj.values
-    
 end
