@@ -1,28 +1,25 @@
 # @param {Integer[]} nums
 # @param {Integer} k
 # @return {Integer[]}
+
+
+
 def top_k_frequent(nums, k)
-  counts = {}
-  nums.each do |num|
-    if counts[num]
-      counts[num] += 1
-    else
-      counts[num] = 1
-    end
-  end
 
-  result = []
-  max_count = counts.values.max
-  while k > 0 && max_count > 0
-    counts.each do |num, count|
-      if count == max_count
-        result << num
-        k -= 1
-        break if k == 0
-      end
-    end
-    max_count -= 1
-  end
+    frequency = Hash.new(0)
 
-  result
+    nums.each {|num| frequency[num] += 1}
+
+    bucket = Array.new(nums.length + 1) {[]}
+
+    frequency.each do |key,value|
+    bucket[value] << key
+    end
+
+    result = []
+    (bucket.length - 1).downto(0) do |i|
+    result.concat(bucket[i])
+    break if result.length >= k
+    end
+    result
 end
