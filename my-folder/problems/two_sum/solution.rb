@@ -1,16 +1,12 @@
 def two_sum(nums, target)
+hash = {}
 
-    hash = {}
-
-
-    nums.each_with_index do |ele,i|
-        comp = target - ele
-
-        if hash[comp]
-            return [hash[comp],i]
-        else
-            hash[ele] = i
-        end
-    end
-
+nums.each_with_index do |num,i|
+complement = target - num
+if hash[complement]
+    return [hash[complement],i]
+else
+    hash[num] = i
+end
+end
 end
